@@ -32,7 +32,7 @@ Current Inventory
 
 ![3](https://user-images.githubusercontent.com/69115195/161383558-766d0344-a2d0-48de-b993-af1308914568.PNG)
 
-Inventory Detail
+Inventory Details
 
 ![4](https://user-images.githubusercontent.com/69115195/161383587-d1f2b3df-3774-4358-8bff-17f422c967c0.PNG)
 
