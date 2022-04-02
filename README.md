@@ -51,3 +51,7 @@ Add Inventory
 # Author
 
 Name: Gábor Benke * Mail: gunnar1904@gmail.com
+
+# License
+
+Apache License 2.0
