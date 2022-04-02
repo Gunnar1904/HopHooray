@@ -1,0 +1,68 @@
+<!DOCTYPE html5>
+<head>
+    <meta charset="UTF-8">
+    <title>Hop Hooray : Add Inventory</title>
+	<style>
+		.h1 {
+			margin-left: 60px;
+            font: AlternateGotNo3D;
+            font-family: AlternateGotNo3D;
+            font-size: 100;
+		}
+
+		.body {
+			font: AlternateGotNo3D;
+            font-family: AlternateGotNo3D;
+            background-color: #F3FBD9;
+		}
+
+		.form {
+			font: AlternateGotNo3D;
+            font-family: AlternateGotNo3D;
+			font-size: 20px;
+			margin-left: 60px;
+			margin-right: 850px;
+		}
+
+		.button {
+			background-color: #2F6B35;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font: AlternateGotNo3D;
+            font-family: AlternateGotNo3D;
+            font-size: 20px;
+            margin: 4px 2px;
+            cursor: pointer;
+            margin-left: 40px;
+		}
+
+		.button:hover {
+			color: #C1EA3E !important;
+            text-decoration: none;
+		}
+	</style>
+{% load static %}
+<link rel="shortcut icon" type="image/png" href="{% static 'hophooray/favicon.ico'%}"/>
+</head>
+{% include "basemenu2.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<h1 class="h1">ADD INVENTORY</h1>
+</br>
+<body class="body">
+<p>
+	<form class="form" action="" method="post" id="upload_form" enctype="multipart/form-data">
+    	{% csrf_token %}
+    	{{ form|crispy }}
+    	</br>
+    	<input class="button" type="submit" value="SUBMIT">
+    	<input class="button" type="submit" value="CANCEL" onclick="window.location.href='{% url 'hophooray:inventory' %}'; return false;">
+  	</form>
+</p>
+</body>
+{% endblock %}
+</html>

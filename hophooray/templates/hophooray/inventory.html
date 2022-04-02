@@ -1,0 +1,73 @@
+<!DOCTYPE html5>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hop Hooray : Current Inventory</title>
+    <style>
+        .h1 {
+            margin-left: 60px;
+            font: AlternateGotNo3D;
+            font-family: AlternateGotNo3D;
+            font-size: 100;
+        }
+
+        .h3 {
+            margin-left: 60px;
+            font: AlternateGotNo3D;
+            font-family: AlternateGotNo3D;
+            font-size: 20;
+        }
+
+        .body {
+            font: AlternateGotNo3D;
+            font-family: AlternateGotNo3D;
+            background-color: #F3FBD9;
+        }
+
+        .navlink {
+            color: #2F6B35 !important;
+        }
+
+        .navlink:hover, .navlink:active {
+            color: #C1EA3E !important;
+            text-decoration: none;
+        }
+    </style>
+{% load static %}
+<link rel="shortcut icon" type="image/png" href="{% static 'hophooray/favicon.ico'%}"/>
+</head>
+{% include "basemenu2.html" %}
+{% block content %}
+<h1 class="h1">CURRENT INVENTORY</h1>
+</br>
+<body class="body">
+<p class="h3">
+Here you can see the current stock:
+</p>
+<p>
+{% if beerlist %}
+    <ul class="h3">
+    {% for beer in beerlist %}
+    <li>
+        <a class="navlink" href="{% url 'hophooray:inventory_detail' beer.id %}">{{ beer.name|upper }}</a>
+        (owner: {{ beer.owner }})
+        {% if beer.owner_id == user.id %}
+        [ <a class="navlink" href="{% url 'hophooray:inventory_update' beer.id %}">UPDATE</a> |
+        <a class="navlink" href="{% url 'hophooray:inventory_confirm_delete' beer.id %}">DELETE</a> ]
+        </br>
+        Added at: {{ beer.added_at }} *
+        Updated at: {{ beer.updated_at }}
+        {% endif %}
+        <p></p>
+    </li>
+    {% endfor %}
+    {% else %}
+    </br>
+    <p class="h3">THERE IS NO BEER IN YOUR INVENTORY.</p>
+    </ul>
+{% endif %}
+</p>
+</body>
+{% endblock %}
+</html>
+

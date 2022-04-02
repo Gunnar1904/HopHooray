@@ -1,0 +1,71 @@
+<!DOCTYPE html5>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hop Hooray : Home</title>
+    <style>
+        .body {
+            background-color: #F3FBD9;
+        }
+
+        .hophooray-fologo {
+            text-align: center;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 50%;
+        }
+
+        .beeronstock {
+            text-align: center;
+            font: AlternateGotNo3D;
+            font-family: AlternateGotNo3D;
+            font-size: 80;
+            color: black;
+            text-decoration: none;
+        }
+
+        .totalamount {
+            text-align: center;
+            font: AlternateGotNo3D;
+            font-family: AlternateGotNo3D;
+            font-size: 190;
+            color: #2F6B35;
+            text-decoration: none;
+        }
+
+        .nobeer {
+            text-align: center;
+            font: AlternateGotNo3D;
+            font-family: AlternateGotNo3D;
+            font-size: 100;
+            color: red;
+            text-decoration: none;
+        }
+    </style>
+{% load static %}
+<link rel="shortcut icon" type="image/png" href="{% static 'hophooray/favicon.ico'%}"/>
+</head>
+{% include "basemenu2.html" %}
+{% block content %}
+<body class="body">
+</br>
+<img class="hophooray-fologo" src='{% static "hophooray/hophooray-fologo.png" %}' alt="Hop Hooray Main Logo" width="772" height="234">
+</br>
+</br>
+<h1 class="beeronstock">BEER ON STOCK:</h1>
+</br>
+{% if beerlist %}
+<h1 class="totalamount">
+{{ beerlist }}
+{% else %}
+<h1 class= "nobeer">{{ 'YOU HAVE NO BEER :-(' }}</h1>
+{% endif %}
+</h1>
+<p>
+</p>
+</body>
+{% endblock %}
+</html>
+
+

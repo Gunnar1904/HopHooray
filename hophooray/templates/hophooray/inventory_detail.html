@@ -1,0 +1,75 @@
+<!DOCTYPE html5>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Hop Hooray : Inventory Details</title>
+    <style>
+        .h1 {
+            margin-left: 60px;
+            font: AlternateGotNo3D;
+            font-family: AlternateGotNo3D;
+            font-size: 100;
+        }
+
+        .h3 {
+            margin-left: 22px;
+            font: AlternateGotNo3D;
+            font-family: AlternateGotNo3D;
+            font-size: 20;
+        }
+
+        .body {
+            font: AlternateGotNo3D;
+            font-family: AlternateGotNo3D;
+            background-color: #F3FBD9;
+        }
+
+        .navlink {
+            color: #2F6B35 !important;
+        }
+
+        .navlink:hover, .navlink:active {
+            color: #C1EA3E !important;
+            text-decoration: none;
+        }
+    </style>
+{% load static %}
+<link rel="shortcut icon" type="image/png" href="{% static 'hophooray/favicon.ico'%}"/>
+</head>
+{% include "basemenu2.html" %}
+{% block content %}
+{% if beerdetail %}
+{% for beer in beerdetail %}
+<h1 class="h1">
+    {{ beer.name|upper }}
+</h1>
+{% endfor %}
+{% endif %}
+<p>
+</p>
+</br>
+<body class="body">
+<h3 class="h3">
+{% if beerdetail %}
+<ul>
+    {% for beer in beerdetail %}
+        BEER TYPE: &nbsp; {{ beer.beertype }}
+        </br></br>
+        ORIGIN: &nbsp; {{ beer.origin }}
+        </br></br>
+        AMOUNT ON STOCK: &nbsp; {{ beer.amount }} cans &nbsp;
+        [ <a class="navlink" href="{% url 'hophooray:inventory_update' beer.id %}">UPDATE</a> |
+        <a class="navlink" href="{% url 'hophooray:inventory_confirm_delete' beer.id %}">DELETE</a> ]
+        </br></br>
+        UNIT PRICE: &nbsp; {{ beer.price }} HUF
+        </br></br>
+        TOTAL VALUE: &nbsp; {{ beer.total_value }} HUF
+        </br></br>
+        STOCK ADDED AT: &nbsp; {{ beer.added_at }} &nbsp; | &nbsp; STOCK UPDATED AT: &nbsp; {{ beer.updated_at }}
+    {% endfor %}
+</ul>
+{% endif %}
+</h3>
+</body>
+{% endblock %}
+</html>

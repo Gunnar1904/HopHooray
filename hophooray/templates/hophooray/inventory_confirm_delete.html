@@ -1,0 +1,63 @@
+<!DOCTYPE html5>
+<head>
+    <meta charset="UTF-8">
+    <title>Hop Hooray : Delete Inventory</title>
+    <style>
+        .h1 {
+            margin-left: 60px;
+            font: AlternateGotNo3D;
+            font-family: AlternateGotNo3D;
+            font-size: 100;
+        }
+
+        .h3 {
+            margin-left: 60px;
+            font: AlternateGotNo3D;
+            font-family: AlternateGotNo3D;
+            font-size: 20;
+        }
+
+        .body {
+            font: AlternateGotNo3D;
+            font-family: AlternateGotNo3D;
+            background-color: #F3FBD9;
+        }
+
+        .button {
+            background-color: #2F6B35;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font: AlternateGotNo3D;
+            font-family: AlternateGotNo3D;
+            font-size: 20px;
+            margin: 4px 2px;
+            cursor: pointer;
+            margin-left: 100px;
+        }
+
+        .button:hover {
+            color: #C1EA3E !important;
+            text-decoration: none;
+        }
+    </style>
+{% load static %}
+<link rel="shortcut icon" type="image/png" href="{% static 'hophooray/favicon.ico'%}"/>
+</head>
+{% include 'basemenu2.html' %}
+{% block content %}
+<h1 class="h1">DELETE BEER</h1>
+<body class="body">
+</br>
+<h3 class="h3">Are you sure to delete this beer: {{ beer.name|upper }}?</h3>
+</br>
+<form action="" method="POST">
+    {% csrf_token %}
+    <input class="button" type="submit" value="YES, DELETE">
+</form>
+{% endblock %}
+</body>
+</html>
